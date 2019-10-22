@@ -1,14 +1,62 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-title color="secondary">
+            Radio group issue
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content fullscreen>
+    <ion-list style="background: transparent !important;" lines="none">
+        <ng-container *ngFor="let product of newProductsAndVariants; let i = index">
+            <ion-list-header class="ion-padding-top">
+                <ion-label>
+                    <div style="color: white;font-size: 25px;">{{product?.languages['en']?.name}}</div>
+                    <div style="color: white;font-size: 15px;font-weight: 100;" text-mixed-casing> <span>
+              {{product?.languages['en']?.description}} </span> </div>
+                </ion-label>
+            </ion-list-header>
+            <ion-radio-group allowEmptySelection="true">
+                <ion-item lines="none" *ngFor="let variant of product?.variants; let j = index">
+                    <ion-radio slot="start" mode="md">
+                    </ion-radio>
+                    <ion-label class="ion-text-wrap">
+                        <div style="color: white;font-size: 20px;"> {{variant?.languages['en']?.variantName}} </div>
+                    </ion-label>
+                    <ion-label slot="end" class="ion-text-right">
+                        <div style="color: white;font-size: 20px;"><span style="margin-right: 20px;">{{variant?.duration}}
+                min</span><span>{{variant?.pricing[0]?.price}}</span></div>
+                    </ion-label>
+                </ion-item>
+            </ion-radio-group>
+        </ng-container>
+    </ion-list>
 </ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+        <ion-item lines="none">
+            <ion-label>
+                <div fs20 white>Total</div>
+            </ion-label>
+            <ion-label slot="end" class="ion-text-right">
+                <div fs20 white><span margin-right-20>{{totalTime ? totalTime : '0'}}
+            min</span><span>{{totalPrice ? totalPrice : '0'}}</span></div>
+            </ion-label>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <ion-button class="ion-text-uppercase" expand="block" color="medium" (click)="back()">Back
+                </ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button class="ion-text-uppercase" expand="block" color="medium" (click)="cancelModal()">Cancel
+                </ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button class="ion-text-uppercase" expand="block" [disabled]="!totalTime && !totalPrice" (click)="goToBooking3()">
+                    Continue </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>

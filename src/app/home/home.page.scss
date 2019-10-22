@@ -1,1 +1,21 @@
+ion-header {
+    ion-toolbar {
+        --background: linear-gradient(to bottom, rgba(29, 50, 86, 1) 10%, rgba(40, 47, 66, 0));
+    }
+}
 
+ion-content {
+    --background: #282f42;
+    ion-item {
+        --background: transparent;
+    }
+}
+
+ion-footer {
+    ion-toolbar {
+        --background: linear-gradient(to top, rgba(29, 50, 86, 1) 40%, rgba(40, 47, 66, 0));
+        ion-item {
+            --background: transparent;
+        }
+    }
+}
