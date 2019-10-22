@@ -1,0 +1,7 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "radio-group-issue",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

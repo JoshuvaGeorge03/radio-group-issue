@@ -1,0 +1,7 @@
+{
+  "name": "radio-group-issue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
