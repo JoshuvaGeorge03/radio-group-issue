@@ -1,0 +1,24 @@
+<ion-list style="background: transparent !important;" lines="none">
+    <ng-container *ngFor="let product of productVariants; let i = index">
+        <ion-list-header class="ion-padding-top">
+            <ion-label>
+                <div style="color: white;font-size: 25px;">{{product?.languages['en']?.name}}</div>
+                <div style="color: white;font-size: 15px;font-weight: 100;" text-mixed-casing> <span>
+        {{product?.languages['en']?.description}} </span> </div>
+            </ion-label>
+        </ion-list-header>
+        <ion-radio-group allowEmptySelection="true" (ionChange)="emit($event.target.value)">
+            <ion-item lines="none" *ngFor="let variant of product?.variants; let j = index">
+                <ion-radio slot="start" mode="md">
+                </ion-radio>
+                <ion-label class="ion-text-wrap">
+                    <div style="color: white;font-size: 20px;"> {{variant?.languages['en']?.variantName}} </div>
+                </ion-label>
+                <ion-label slot="end" class="ion-text-right">
+                    <div style="color: white;font-size: 20px;"><span style="margin-right: 20px;">{{variant?.duration}}
+          min</span><span>{{variant?.pricing[0]?.price}}</span></div>
+                </ion-label>
+            </ion-item>
+        </ion-radio-group>
+    </ng-container>
+</ion-list>

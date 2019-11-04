@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  public productObs: Observable<any[]>;
   public newProductsAndVariants = [
     {
       languages: {
@@ -302,6 +305,11 @@ export class HomePage {
       ]
     }
   ];
-  constructor() {}
+  constructor() {
+    this.productObs = of(this.newProductsAndVariants).pipe(delay(500));
+  }
+  eventEmitted(value) {
+    console.log('value', value);
+  }
 
 }
